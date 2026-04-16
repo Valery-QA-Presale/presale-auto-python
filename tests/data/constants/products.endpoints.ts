@@ -1,0 +1,27 @@
+export const PRODUCTS_ENDPOINTS = {
+  DML: {
+    CREATE: '/product/create',
+    UPDATE: '/product/update',
+    DELETE: '/product/delete',
+  },
+  SCREEN: {
+    CATEGORIES: '/screen/categories',
+    INFO: '/screen/product-info',
+    BRANDS: '/screen/brands',
+    SIZE: '/screen/size',
+    MATERIAL: '/screen/material',
+    COLOR: '/screen/color',
+    COMPLETE_SET: '/screen/complete-set',
+    USAGE_TRACES: '/screen/usage-traces',
+    IMAGES: '/screen/product/images',
+    DESCRIPTION: '/screen/product/description',
+    ADDRESSES_LIST: '/screen/product/addresses-list',
+    PAYMENTS_CARDS_LIST: '/screen/product/payments-cards-list',
+    WITHDRAW_ADDRESS_ADD: '/screen/product/withdraw-address-add',
+    PRICE: '/screen/product/price',
+    SUMMARY_PAGE: '/screen/product/summary-page',
+    TYP: '/screen/product/TYP',
+    LIST: '/screen/product-list',
+  },
+  PRICE_CALCULATE: '/product/price/calculate',
+} as const;

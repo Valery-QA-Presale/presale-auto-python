@@ -1,0 +1,31 @@
+name: 🧪 b2c Complete Suite
+
+on:
+  schedule:
+  - cron: '0 */3 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npx playwright install chromium
+
+      - name: Create .env file
+        run: |
+          echo "B2C_BASE_URL=${{ secrets.B2C_BASE_URL }}" >> .env
+          echo "B2B_BASE_URL=${{ secrets.B2B_BASE_URL }}" >> .env
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> .env
+          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
+
+      - name:  Run B2C Tests
+        run: npm run test:b2c

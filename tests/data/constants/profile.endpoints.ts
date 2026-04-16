@@ -1,0 +1,26 @@
+export const PROFILE_ENDPOINTS = {
+  GET: {
+    PERSONAL_INFO: '/screen/profile/personal-info',
+    EMAIL_SCREEN: '/screen/profile/email',
+    OTP_EMAIL: '/screen/profile/otp/email',
+    PAYMENT_CARDS_LIST: '/screen/profile/payment-cards-list',
+    ORDERS_LIST: '/screen/profile/orders-list',
+    ORDER_DATA: '/screen/profile/orders-data',
+    ADDRESSES_LIST: '/screen/profile/addresses-list',
+    ADDRESS: '/screen/profile/address',
+    SUPPORT: '/screen/support',
+    NOTIFICATIONS: '/screen/notifications',
+  },
+  POST: {
+    SAVE_PERSONAL_DATA: '/profile/personal-data/save',
+    EMAIL_VERIFICATIONS: '/profile/email-verifications',
+    VERIFY_EMAIL_OTP: '/profile/verify/email-otp',
+    PAYMENT_CARD_MAKE_DEFAULT: '/profile/payment-card-make-default',
+    PAYMENT_CARD_DELETE: '/profile/payment-card-delete',
+    ORDER_CANCEL: '/profile/order-cancel',
+    ADDRESS_CREATE: '/profile/address-create',
+    ADDRESS_UPDATE: '/profile/address-update',
+    ADDRESS_MAKE_DEFAULT: '/profile/address-make-default',
+    ADDRESS_DELETE: '/profile/address-delete',
+  },
+} as const;

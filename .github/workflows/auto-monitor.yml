@@ -1,0 +1,42 @@
+name: 🚨 Stand Monitor
+
+on:
+  
+  schedule:
+   - cron: '*/30 6-18 * * 1-5'
+
+  # Ручной запуск из интерфейса GitHub
+  workflow_dispatch:
+
+jobs:
+  monitor-stand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+
+    steps:
+      # 1. Забираем код
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Устанавливаем Node.js
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'  # Кэшируем зависимости для скорости
+
+      # 3. Устанавливаем зависимости
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # 4. Устанавливаем Playwright (только Chromium)
+      - name: 🌐 Install Playwright
+        run: npx playwright install --with-deps chromium
+
+      # 5. Запускаем B2C smoke тесты
+      - name: 🧪 Run B2C Smoke Tests
+        run: npm run test:smoke:b2c
+
+      # 6. Запускаем B2B smoke тесты
+      - name: 🏢 Run B2B Smoke Tests
+        run: npm run test:smoke:b2b
