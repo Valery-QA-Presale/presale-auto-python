@@ -1,5 +1,7 @@
 #  PLAYWRIGHT REPORTS
 test-results/
+roadmap/
+
 playwright-report/
 playwright/.cache/
 
